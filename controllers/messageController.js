@@ -22,6 +22,17 @@ const getAllMessages = (req, res) => {
     res.json(response);
 };
 
+const getMessageById = (req, res) => {
+    const id = req.params.id;
+    let response = {
+        status: "success",
+        message: 'Message retrieved with id: ' + id,
+        data: messages
+    }
+    res.json(response);
+};
+
 module.exports = {
-    getAllMessages
+    getAllMessages,
+    getMessageById
 }
