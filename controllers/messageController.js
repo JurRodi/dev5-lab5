@@ -43,8 +43,21 @@ const createMessage = (req, res) => {
     res.json(response);
 };
 
+const updateMessage = (req, res) => {
+    const id = req.params.id;
+    const message = req.body;
+    messages[id] = message;
+    let response = {
+        status: "success",
+        message: 'Message updated successfully for user: ' + message.user,
+        data: message
+    }
+    res.json(response);
+};
+
 module.exports = {
     getAllMessages,
     getMessageById,
-    createMessage
+    createMessage,
+    updateMessage
 }
