@@ -55,9 +55,22 @@ const updateMessage = (req, res) => {
     res.json(response);
 };
 
+const deleteMessage = (req, res) => {
+    const id = req.params.id;
+    const message = messages[id];
+    messages.splice(id, 1);
+    let response = {
+        status: "success",
+        message: 'Message deleted successfully for user: ' + message.user,
+        data: message
+    }
+    res.json(response);
+};
+
 module.exports = {
     getAllMessages,
     getMessageById,
     createMessage,
-    updateMessage
+    updateMessage,
+    deleteMessage
 }
