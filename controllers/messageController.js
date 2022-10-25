@@ -27,7 +27,7 @@ const getMessageById = (req, res) => {
     let response = {
         status: "success",
         message: 'Message retrieved with id: ' + id,
-        data: messages
+        data: messages[id]
     }
     res.json(response);
 };
