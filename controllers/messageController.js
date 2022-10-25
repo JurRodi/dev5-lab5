@@ -14,12 +14,16 @@ let messages = [
 ];
 
 const getAllMessages = (req, res) => {
-    let response = {
-        status: "success",
-        message: 'All messages retrieved',
-        data: messages
+    if(req.query.user) {
+        getMessagesByUser;
+    } else {
+        let response = {
+            status: "success",
+            message: 'All messages retrieved',
+            data: messages
+        }
+        res.json(response);
     }
-    res.json(response);
 };
 
 const getMessageById = (req, res) => {
@@ -28,6 +32,16 @@ const getMessageById = (req, res) => {
         status: "success",
         message: 'Message retrieved with id: ' + id,
         data: messages[id]
+    }
+    res.json(response);
+};
+
+const getMessagesByUser = (req, res) => {
+    const user = req.params.user;
+    let response = {
+        status: "success",
+        message: 'Messages retrieved for user: ' + user,
+        data: messages.filter(message => message.user === user)
     }
     res.json(response);
 };
@@ -72,5 +86,6 @@ module.exports = {
     getMessageById,
     createMessage,
     updateMessage,
-    deleteMessage
+    deleteMessage,
+    getMessagesByUser
 }
