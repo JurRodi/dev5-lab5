@@ -33,7 +33,9 @@ const getMessageById = (req, res) => {
     let response = {
         status: "success",
         message: 'Message retrieved with id: ' + id,
-        data: messages[id]
+        data: {
+            messages: messages[id]
+        }
     }
     res.json(response);
 };
@@ -43,7 +45,9 @@ const getMessagesByUser = (req, res) => {
     let response = {
         status: "success",
         message: 'Messages retrieved for user: ' + user,
-        data: messages.filter(message => message.user === user)
+        data: {
+            messages: messages.filter(message => message.user === user)
+        }
     }
     res.json(response);
 };
@@ -54,7 +58,9 @@ const createMessage = (req, res) => {
     let response = {
         status: "success",
         message: 'Message created successfully for user: ' + message.user,
-        data: message
+        data: {
+            message: message
+        }
     }
     res.json(response);
 };
@@ -66,7 +72,9 @@ const updateMessage = (req, res) => {
     let response = {
         status: "success",
         message: 'Message updated successfully for user: ' + message.user,
-        data: message
+        data: {
+            message: message
+        }
     }
     res.json(response);
 };
@@ -78,7 +86,9 @@ const deleteMessage = (req, res) => {
     let response = {
         status: "success",
         message: 'Message deleted successfully for user: ' + message.user,
-        data: message
+        data: {
+            message: message
+        }
     }
     res.json(response);
 };
