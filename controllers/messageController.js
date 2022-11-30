@@ -20,7 +20,9 @@ const getAllMessages = (req, res) => {
         let response = {
             status: "success",
             message: 'All messages retrieved',
-            data: messages
+            data: {
+                messages: messages
+            }
         }
         res.json(response);
     }
